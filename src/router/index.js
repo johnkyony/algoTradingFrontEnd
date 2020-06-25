@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import ShowTrades from '../views/ShowTrades.vue'
-
+import ShowPendingTrades from '../views/ShowPendingTrades.vue'
+import ShowOpenPositions from '../views/ShowOpenPositions.vue'
 Vue.use(VueRouter)
 
   const routes = [
@@ -23,6 +24,20 @@ Vue.use(VueRouter)
     path: '/ShowTrades',
     name: 'ShowTrades',
     component: ShowTrades, 
+    props: true
+
+  },
+  {
+    path: '/ShowPendingTrades',
+    name: 'ShowPendingTrades',
+    component: ShowPendingTrades, 
+    props: true
+
+  },
+  {
+    path: '/ShowOpenPositions',
+    name: 'ShowOpenPositions',
+    component: ShowOpenPositions, 
     props: true
 
   }

@@ -1,9 +1,15 @@
 <template>
           <div class="container-fluid">
           <div class="row">
+            <transition name="fade">
+              
+                <div v-if="loadingStatus" class="spinner-border" role="status">
+                   <span class="sr-only">Loading...</span>
+                </div>
+            </transition>
             <account-detail :accountDetails="defaultAccountDetails"></account-detail>
             <current-revenue :realTimeRevenue="realTimeRevenue"></current-revenue>
-            <current-stock-portfolio></current-stock-portfolio>
+            <current-stock-portfolio :positions="setAllOpenPositions"></current-stock-portfolio>
             <all-open-trades :allOpenTrades="setAllOpenTrades"></all-open-trades>
           </div>
           <div class="row">
@@ -43,6 +49,9 @@ export default {
     totalPendingTrades
   } , 
   computed: {
+    setAllOpenPositions(){
+      return this.$store.getters["allOpenPositions"]
+    },
     setAllPendingTrades(){
       return this.$store.getters["allPendingTrades"]
     },
@@ -67,13 +76,14 @@ export default {
     }, 
     topTenWinningTrades(){
       return this.$store.getters["topTenWinningTrades"]
-    }
+    }, 
+    loadingStatus(){
+      return this.$store.getters["loadingStatus"]
+    } 
   },
   async created(){
-    let allOpenTrades =  this.$store.dispatch("setAllOpenTrades")
-    let allPendingTrades =  this.$store.dispatch("setAllPendingTrades")
-    let defaultAccountDetails =  this.$store.dispatch("setDefaultAccountDetails")
-    
+    let initApp =  this.$store.dispatch("initApp")
+   
   }
 }
 </script>

@@ -19,7 +19,7 @@
                         
                         <td>{{trade.instrument}}</td>
                         <td>{{trade.price}}</td>
-                        <td>${{trade.unrealizedPL}}</td>
+                        <td>{{trade.unrealizedPL}} USD</td>
                         
                         <td> <a  @click="closeTrade(trade.id)" class="btn btn-primary btn-round">Close</a></td>
                       </tr>

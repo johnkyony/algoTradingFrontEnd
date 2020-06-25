@@ -1,5 +1,5 @@
 <template>
-                <div class="col-lg-6 col-md-12">
+                <div class="col-lg-12 col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">Trades</h4>
@@ -7,21 +7,20 @@
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
-                    <thead class="text-warning">
+                    <thead class="text-black">
                       <th>Instrument</th>
                       <th>Price</th>
                       <th>UnrealizedPL</th>
-                      
-                      <th></th>
+                      <th> <a @click="closeAllTrades" class="btn btn-danger btn-round">Close All Trades</a></th>
                       
                     </thead>
                     <tbody>
                       <tr v-for="trade in trades" :key= trade.id>
                         
                         <td>{{trade.instrument}}</td>
-                         <td>{{trade.price}}</td>
-                        <td> {{trade.unrealizedPL}} USD</td>
-                       
+                        <td>{{trade.price}}</td>
+                        <td>{{trade.unrealizedPL}} USD</td>
+                        
                         <td> <a  @click="closeTrade(trade.id)" class="btn btn-primary btn-round">Close</a></td>
                       </tr>
       
@@ -47,7 +46,10 @@ export default {
     methods: {
       closeTrade(tradeId){
         
-        this.$store.dispatch("closeTrade" , tradeId)
+        this.$store.dispatch("closePendingTrade" , tradeId)
+      } , 
+      closeAllTrades(){
+        this.$store.dispatch("closeAllPendingTrades" , this.trades)
       }
     }
 }

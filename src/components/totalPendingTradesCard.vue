@@ -31,7 +31,7 @@ export default {
     methods: {
         goToOpenTrade(){
             this.$router.push({
-                name: 'ShowTrades',
+                name: 'ShowPendingTrades',
                 params: {
                     tradeData: this.trades, 
                     pageTitle: "All Pending Trades"

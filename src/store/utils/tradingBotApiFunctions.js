@@ -58,10 +58,44 @@ const closeAllTrades = async (trades) => {
     }
 }
 
+const closePendingTrade = async (trade) => {
+    try {
+        let pendingTrade = await axios.post(apiUrl + `orderCancel` , {
+            orderSpecifier: trade
+        })
+        return pendingTrade.data
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+const closeAllPendingTrades = async (trades) => {
+    try {
+        let allPendingTrades = await axios.post(apiUrl + `closeAllPendingTrades` , {
+            trades: trades
+        })
+        return allPendingTrades.data
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+const allOpenPositions = async () => {
+    try {
+        let allOpenPositions = await axios.get(apiUrl + `allOpenPositions`)
+        return allOpenPositions.data.positions
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 export default {
     forexAccountSummary,
     closeTrade ,  
     allOpenTrades , 
     allPendingTrades,
-    closeAllTrades
+    allOpenPositions,
+    closeAllTrades,
+    closePendingTrade,
+    closeAllPendingTrades
 }
