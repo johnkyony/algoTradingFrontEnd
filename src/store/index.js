@@ -143,10 +143,14 @@ export default new Vuex.Store({
       let tradeAmounts = trades.map((trade) => {
         return Number(trade.unrealizedPL)
       })
-      let total = tradeAmounts.reduce((previous , current) => {
-        return previous + current
-      })
-      return total
+      if(tradeAmounts.length != 0){
+        let total = tradeAmounts.reduce((previous , current) => {
+          return previous + current
+        })
+        return total
+      }
+      
+      
     }, 
     profitableTrades: state => {
       const trades = state.allOpenTrades 
@@ -169,7 +173,7 @@ export default new Vuex.Store({
       let lossingTrades = trades.filter((trade) => {
         return (trade.unrealizedPL < 0)
       })
-      let sortedLossingTrades = lossingTrades.sort((a,b) =>    a.unrealizedPL -  b.unrealizedPL   )
+      let sortedLossingTrades = lossingTrades.sort((a,b) =>    b.unrealizedPL -  a.unrealizedPL  )
       
       return sortedLossingTrades.slice(Math.max(lossingTrades.length - 10 , 0))
     } , 

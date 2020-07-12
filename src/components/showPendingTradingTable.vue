@@ -10,6 +10,7 @@
                     <thead class="text-black">
                       <th>Instrument</th>
                       <th>Price</th>
+                      <th>Action</th>
                       <th>UnrealizedPL</th>
                       <th> <a @click="closeAllTrades" class="btn btn-danger btn-round">Close All Trades</a></th>
                       
@@ -19,6 +20,7 @@
                         
                         <td>{{trade.instrument}}</td>
                         <td>{{trade.price}}</td>
+                        <td>{{priceAction(trade.units)}}</td>
                         <td>{{trade.unrealizedPL}} USD</td>
                         
                         <td> <a  @click="closeTrade(trade.id)" class="btn btn-primary btn-round">Close</a></td>
@@ -50,6 +52,14 @@ export default {
       } , 
       closeAllTrades(){
         this.$store.dispatch("closeAllPendingTrades" , this.trades)
+      }, 
+      priceAction(action){
+        console.log(action)
+        if (action === "1"){
+          return 'Buy'
+        } else if (action === "-1") {
+          return 'Sell'
+        }
       }
     }
 }

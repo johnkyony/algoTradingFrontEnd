@@ -1,12 +1,12 @@
 <template>
           <div class="container-fluid">
           <div class="row">
-            <transition name="fade">
+            <!-- <transition name="fade">
               
                 <div v-if="loadingStatus" class="spinner-border" role="status">
                    <span class="sr-only">Loading...</span>
                 </div>
-            </transition>
+            </transition> -->
             <account-detail :accountDetails="defaultAccountDetails"></account-detail>
             <current-revenue :realTimeRevenue="realTimeRevenue"></current-revenue>
             <current-stock-portfolio :positions="setAllOpenPositions"></current-stock-portfolio>
