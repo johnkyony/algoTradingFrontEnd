@@ -1,5 +1,5 @@
 module.exports = {
     devServer: {
-        proxy: 'http://192.168.0.117:5000/tradingBot/'
+        proxy: 'http://178.63.96.8:5000/tradingBot/'
     }
 }
