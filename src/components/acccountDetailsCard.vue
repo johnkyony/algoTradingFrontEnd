@@ -5,8 +5,8 @@
             <!-- <div class="card-icon">
             <i class="material-icons">content_copy</i>
             </div> -->
-            <p class="card-category">Active Account Total Balance</p>
-            <h3 class="card-title">{{accountDetails.account.balance}}
+            <p class="card-category">Total Profit & Loss </p>
+            <h3 class="card-title">{{accountDetails.account.pl}}
             <small>USD</small>
             </h3>
         </div>
