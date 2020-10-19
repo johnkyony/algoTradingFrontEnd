@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const apiUrl = 'http://192.168.0.161:5000/tradingBot/'
+const apiUrl = 'http://192.168.0.117:5000/tradingBot/'
 
 const forexAccountSummary = async function () {
     try {
