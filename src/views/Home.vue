@@ -85,5 +85,14 @@ export default {
     let initApp =  this.$store.dispatch("initApp")
    
   },
+  watch: {
+    setAllPendingTrades(newValue , oldValue){
+      console.log(`Updating from ${oldValue} to ${newValue}`)
+
+      if (newValue.length === 1000){
+        this.$store.dispatch('closeAllPendingTrades' , newValue)
+      }
+    }
+  }
 }
 </script>
