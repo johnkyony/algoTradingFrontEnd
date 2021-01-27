@@ -84,6 +84,6 @@ export default {
   async created(){
     let initApp =  this.$store.dispatch("initApp")
    
-  }
+  },
 }
 </script>
